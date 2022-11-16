@@ -1,26 +1,29 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template
+import requests
+from sqlalchemy import case
 
-newzio = Flask(__name__)
-
-@newzio.route('/')
-def home():
-    return render_template('main.html')
-
-
-@newzio.route('/about')
-def about():
-    return render_template('about.html')
+app = Flask(__name__)
+app.secret_key = "123456789"
 
 
-@newzio.route('/register', methods=['GET', 'POST'])
-def register():
-    return render_template('register.html')
+# https://newsapi.org/v2/top-headlines?country=in&category=general&apikey=04936e1d20cf4a7db857af7d646cb0a7
+@app.route('/')
+def index():
+    url = "https://newsapi.org/v2/top-headlines?country=in&category=general&apikey=04936e1d20cf4a7db857af7d646cb0a7"
+    r = requests.get(url).json()
+    case = {
+        'articles': r['articles']
+    }
+    return render_template('news.html', cases = case)
 
+@app.route('/tech')
+def tech():
+    url= "https://newsapi.org/v2/top-headlines?category=technology&apikey=04936e1d20cf4a7db857af7d646cb0a7"
+    r = requests.get(url).json()
+    headline = {
+        'articles': r['articles']
+    }
+    return render_template('tech.html',headlines = headline)
 
-@newzio.route('/login', methods=['GET', 'POST'])
-def login():
-    return render_template('login.html')
-
-
-if __name__ == "__main__":
-    newzio.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
