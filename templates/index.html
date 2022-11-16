@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newzio</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+    * {
+      -ms-overflow-style: none;  
+      scrollbar-width: none;  
+      box-sizing: border-box;
+    }
+    *::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      display: absolute;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      background-color: #f7f8fc;
+      font-family: "Roboto", sans-serif;
+      color: #10182f;
+    }
+
+    .icon-container {
+      height: 50px;
+      width: 50px;
+      display: flex;
+      margin-left: 30px;
+    }
+    .logo {
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      margin: auto;
+    }
+    .logo-heading {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin: auto!important;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+    }
+    nav {
+      display: flex;
+      border-bottom: 1px solid #daa800;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    input {
+      border: 1px solid #ccc;
+      font-size: 14px;
+      height: 35px;
+      padding: 4px 8px;
+      position: absolute;
+      width: 50%;
+    }
+    input:focus {
+      outline: none;
+    }
+    button {
+      text-align: center;
+    }
+    button:focus {
+      outline: none;
+    }
+    button.btn-search,
+    button.btn-reset {
+      background: hotpink;
+      border: none;
+      height: 30px;
+      font-size: 12px;
+      padding: 4px;
+      position: absolute;
+      width: 30px;
+    }
+    .sample {
+      float: left;
+      height: 50px;
+      margin: 0 8%;
+      margin-left: 15%;
+      margin-top: 2%;
+      position: relative;
+      width: 34%;
+    }
+    .sample.one input,
+    .sample.two input {
+      border-radius: 15px;
+      right: 0;
+      transition: all 0.3s ease-in-out;
+      width: 50%;
+    }
+    .sample.one input:focus,
+    .sample.two input:focus {
+      width: 100%;
+    }
+    .sample.one input:focus ~ button.btn-search,
+    .sample.two input:focus ~ button.btn-search {
+      background: hotpink;
+      color: #fff;
+    }
+    .sample.one input:focus ~ button.btn-reset,
+    .sample.two input:focus ~ button.btn-reset {
+      right: -22px;
+    }
+    .sample.one button,
+    .sample.two button {
+      transition: all 0.3s ease-in-out;
+    }
+    .sample.one button.btn-search,
+    .sample.two button.btn-search {
+      background: #ccc;
+      border-radius: 50%;
+      height: 26px;
+      right: 2px;
+      top: 4px;
+      transition: all 0.3s ease-in-out;
+      width: 26px;
+    }
+    .sample.one button.btn-reset,
+    .sample.two button.btn-reset {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      font-size: 10px;
+      height: 20px;
+      line-height: 20px;
+      padding: 0;
+      right: 5px;
+      top: 5px;
+      width: 20px;
+      z-index: -1;
+    }
+
+    ul {
+      display: flex;
+    }
+    li {
+      list-style: none;
+      margin: 1rem;
+      margin-right: 35px;
+      margin-left: 25px;
+    }
+
+    a {
+      text-decoration: none;
+      color: rgb(49, 49, 47);
+    }
+    a:hover {
+      text-decoration: none;
+      color: #daa800;
+      opacity: 0.8;
+      transition: 1s;
+    }
+    .signup {
+      background-color: #4caf50;
+      border: none;
+      color: white;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 25px;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      background-color: white;
+      color: black;
+      border: 2px solid #4caf50;
+    }
+
+    .signup:hover {
+      background-color: #4caf50;
+      color: white;
+    }
+    .main-container {
+      width: 100%;
+      display: flex;
+      margin: auto;
+      margin-top: 50px;
+      padding: auto;
+    }
+    .left-container {
+      height: 100%;
+      display: flex;
+      width: 20%;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      padding: 20px;
+    
+    }
+    .top-news{
+      height: 700px;
+      padding: 20px;
+      overflow: scroll;
+      border-radius: 17px;
+      background-color: white;
+    }
+    .top-news-heading{
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #47bcd4;
+    }
+    .right-container {
+      display: flex;
+      width: 20%;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      padding: 10px;
+    }
+    .top-cities {
+      width: 100%;
+      height: max-content;
+      padding: 20px;
+      margin-top: 50px;
+      border-radius: 27px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      background-color: white;
+    }
+    .link
+    {
+      text-decoration: none;
+      color: black;
+    }
+    .cities {
+      font-weight: 700;
+      font-size: 1.7rem;
+      text-align: center;
+    }
+    .city {
+      display: flex;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+    .city img {
+      height: 30px;
+      margin-right: 10px;
+      width: 30px;
+    }
+    
+    .middle-container {
+      display: flex;
+      height: 800px;
+      overflow: scroll;
+      width: 60%;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+    }
+    .card {
+      margin: 10px;
+      background-color: #fff;
+      border-radius: 27px;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      width: 300px;
+    }
+    .card-header img {
+      width: 100%;
+      object-fit: cover;
+    }
+    .body-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 10px !important;
+      min-height: 250px;
+    }
+
+    .tag {
+      background: #cccccc;
+      border-radius: 50px;
+      font-size: 12px;
+      margin-bottom: 10px;
+      color: #fff;
+      padding: 2px 10px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .tag-teal {
+      background-color: #47bcd4;
+    }
+    .tag-purple {
+      background-color: #5e76bf;
+    }
+    .tag-pink {
+      background-color: #cd5b9f;
+    }
+    .tag-cyan {
+      background-color: #62e2f3;
+    }
+    .tag-aas {
+      background-color: #838485;
+    }
+
+    .card-body p {
+      font-size: 13px;
+      margin: 0 0 40px;
+    }
+    .user {
+      display: flex;
+      margin-top: auto;
+      margin-right: 20px;
+      margin-top: 5px;
+    }
+
+    .user img {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+    .user-info h5 {
+      margin: 0;
+      margin-top: 5px;
+    }
+    .user-info small {
+      color: black;
+    }
+  </style>
+  <body>
+    <!-- <nav>
+      <div class="icon-container">
+        <img
+          class="logo"
+          src="https://res.cloudinary.com/dpshfseuf/image/upload/v1668487663/samples/logo_drscr7.png"
+        />
+        <h2 class="app-name"><a href="./index.html">Newzio </a></h2>
+      </div>
+      <div class="sample one">
+        <input type="text" name="search" placeholder="search for me" />
+        <button type="submit" class="btn btn-search fa fa-search"></button>
+      </div>
+      <script>
+        $("body")
+          .on("click", "div.three button.btn-search", function (event) {
+            event.preventDefault();
+            var $input = $("div.three input");
+            $input.focus();
+            if ($input.val().length() > 0) {
+              // submit form
+            }
+          })
+          .on("click", "div.four button.btn-search", function (event) {
+            event.preventDefault();
+            var $input = $("div.four input");
+            $input.focus();
+            if ($input.val().length() > 0) {
+              // submit form
+            }
+          })
+          .on("click", "div.five button.btn-search", function (event) {
+            event.preventDefault();
+            var $input = $("div.five input");
+            $input.focus();
+            if ($input.val().length() > 0) {
+              // submit form
+            }
+          })
+          .on("click", "div.six button.btn-search", function (event) {
+            event.preventDefault();
+            var $input = $("div.six input");
+            $input.focus();
+            if ($input.val().length() > 0) {
+              // submit form
+            }
+          })
+          .on("click", "div.thirteen button.btn-search", function (event) {
+            event.preventDefault();
+            var $input = $("div.thirteen input");
+            $input.focus();
+            if ($input.val().length() > 0) {
+              // submit form
+            }
+          })
+          .on("click", "div.fourteen button.btn-search", function (event) {
+            event.preventDefault();
+            var $input = $("div.fourteen input");
+            $input.focus();
+            if ($input.val().length() > 0) {
+              // submit form
+            }
+          });
+      </script>
+      <div class="menu">
+        <ul>
+          <li>
+            <a href="./index.html"> <b>Home</b></a>
+          </li>
+          <li>
+            <a href="#"><b>About</b></a>
+          </li>
+          <li>
+            <a href="./Login/login.html"><b>Sign In</b></a>
+          </li>
+          <li>
+            <a href="./Login/signup.html"><b>Register</b></a>
+          </li>
+          <!-- <div class="user">
+                        <img src="https://lh3.googleusercontent.com/ogw/ADGmqu8sn9zF15pW59JIYiLgx3PQ3EyZLFp5Zqao906l=s32-c-mo" alt="user" />
+                        <div class="user-info">
+                        </div>
+                    </div>       -->
+        </ul>
+      </div>
+    </nav>     -->
+    <div class="main-container">
+      <div class="left-container">
+        <div class="top-news-heading">[ TOP NEWS ]</div>
+        <div class="top-news">
+
+          <hr>
+          {% for top_news in tops.articles %}
+         <a href="{{top_news.url}}" class="link" target="_blank"> <h5>{{top_news.author}}</h5>
+          <p>{{top_news.title}}</p>
+          <p class="text-muted">{{top_news.publishedAt}}</p>
+          <hr></a>
+          {% endfor %}
+        </div>
+       
+      </div>
+      <div class="middle-container">
+        {% for news in cases.articles %}
+        <div class="card">
+          <img src="{{news.urlToImage}}" alt="rover" />
+          <div class="body-card">
+            <span class="tag tag-purple">{{news.author}}</span>
+            <h5>{{news.title}}</h5>
+            <p>{{news.description}}</p>
+            <a href="{{news.url}}" target="_blank" class="btn btn-primary"
+              >Read More</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+      <div class="right-container">
+        <div class="top-cities">
+          <h2 class="cities">TOP CITIES</h2>
+          <hr />
+          <div class="city">
+            <img
+              src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
+              alt=""
+            />
+            <a href="/chennai">Chennai</a>
+          </div>
+          <div class="city">
+            <img
+              src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
+              alt=""
+            />
+            <a href="/bangalore">Bangalore</a>
+          </div>
+          <div class="city">
+            <img
+              src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
+              alt=""
+            />
+            <a href="/mumbai">Mumbai</a>
+          </div>
+          <div class="city">
+            <img
+              src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
+              alt=""
+            />
+            <a href="/kolkata">Kolkata</a>
+          </div>
+          <div class="city">
+            <img
+              src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
+              alt=""
+            />
+            <a href="/hyderabad">Hyderabad</a>
+          </div>
+          <div class="city">
+            <img
+              src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
+              alt=""
+            />
+            <a href="/delhi">Delhi</a>
+          </div>
+          <div class="city">
+            <img
+              src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
+              alt=""
+            />
+            <a href="/Lucknow">Lucknow</a>
+          </div>
+          <div class="city">
+            <img
+              src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
+              alt=""
+            />
+            <a href="/patna">Patna</a>
+          </div>
+          <div class="city">
+            <img
+              src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
+              alt=""
+            />
+            <a href="/kochi">Kochi</a>
+          </div>
+          <div class="city">
+            <img
+              src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
+              alt=""
+            />
+            <a href="/ranchi">Ranchi</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

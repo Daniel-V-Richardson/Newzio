@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  box-sizing: border-box;
+}
+body {
+  display: absolute;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: #f7f8fc;
+  font-family: "Roboto", sans-serif;
+  color: #10182f;
+}
+.icon-container{
+  height: 3%;
+  width: 3%;
+  display: flex;
+  margin-left: 30px;
+}
+.logo{
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+}
+.logo-heading{
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input {
+  border: 1px solid #ccc;
+  font-size: 14px;
+  height: 35px;
+  padding: 4px 8px;
+  position: absolute;
+  width: 50%;
+}
+input:focus {
+  outline: none;
+}
+button {
+  text-align: center;
+}
+button:focus {
+  outline: none;
+}
+button.btn-search, button.btn-reset {
+  background: hotpink;
+  border: none;
+  height: 30px;
+  font-size: 12px;
+  padding: 4px;
+  position: absolute;
+  width: 30px;
+}
+.sample {
+  float: left;
+  height: 50px;
+  margin: 0 8%;
+  margin-left: 15%;
+  margin-top: 2%;
+  position: relative;
+  width: 34%;
+}
+.sample.one input, .sample.two input {
+  border-radius: 15px;
+  right: 0;
+  transition: all 0.3s ease-in-out;
+  width: 50%;
+}
+.sample.one input:focus, .sample.two input:focus {
+  width: 100%;
+}
+.sample.one input:focus ~ button.btn-search, .sample.two input:focus ~ button.btn-search {
+  background: hotpink;
+  color: #fff;
+}
+.sample.one input:focus ~ button.btn-reset, .sample.two input:focus ~ button.btn-reset {
+  right: -22px;
+}
+.sample.one button, .sample.two button {
+  transition: all 0.3s ease-in-out;
+}
+.sample.one button.btn-search, .sample.two button.btn-search {
+  background: #ccc;
+  border-radius: 50%;
+  height: 26px;
+  right: 2px;
+  top: 4px;
+  transition: all 0.3s ease-in-out;
+  width: 26px;
+}
+.sample.one button.btn-reset, .sample.two button.btn-reset {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  font-size: 10px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0;
+  right: 5px;
+  top: 5px;
+  width: 20px;
+  z-index: -1;
+}
+
+ul{
+    display: flex;
+}
+li{
+    list-style: none;
+    margin: 1rem;
+    margin-right: 35px;
+    margin-left: 25px ;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(49, 49, 47);
+}
+a:hover {
+	text-decoration: none;
+	color: #daa800;
+	opacity: 0.8;
+	transition: 1s;
+}
+.signup {
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  border-radius:25px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white;
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.signup:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+.container {
+  display: flex;
+  width: 1040px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.card {
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 300px;
+  height: 460px;
+}
+.card-header img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  min-height: 250px;
+}
+
+.tag {
+  background: #cccccc;
+  border-radius: 50px;
+  font-size: 12px;
+  margin: 0;
+  color: #fff;
+  padding: 2px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.tag-teal {
+  background-color: #47bcd4;
+}
+.tag-purple {
+  background-color: #5e76bf;
+}
+.tag-pink {
+  background-color: #cd5b9f;
+}
+.tag-cyan{
+  background-color: #62e2f3;
+}
+.tag-aas{
+  background-color: #838485;
+}
+
+.card-body p {
+  font-size: 13px;
+  margin: 0 0 40px;
+}
+.user {
+  display: flex;
+  margin-top: auto;
+  margin-right: 20px;
+  margin-top: 5px;
+}
+
+.user img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+.user-info h5 {
+  margin: 0;
+  margin-top: 5px;
+}
+.user-info small {
+  color: black;
+}
