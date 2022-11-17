@@ -23,12 +23,16 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open Sans"
+      rel="stylesheet"
+    />
   </head>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
     * {
-      -ms-overflow-style: none;  
-      scrollbar-width: none;  
+      -ms-overflow-style: none;
+      scrollbar-width: none;
       box-sizing: border-box;
     }
     *::-webkit-scrollbar {
@@ -40,165 +44,10 @@
       align-items: center;
       margin: 0;
       background-color: #f7f8fc;
-      font-family: "Roboto", sans-serif;
+      font-family: "Open Sans";
       color: #10182f;
     }
 
-    .icon-container {
-      height: 50px;
-      width: 50px;
-      display: flex;
-      margin-left: 30px;
-    }
-    .logo {
-      height: 100%;
-      width: 100%;
-      text-align: center;
-      margin: auto;
-    }
-    .logo-heading {
-      font-size: 2rem;
-      font-weight: 700;
-      text-align: center;
-      margin: auto!important;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-        sans-serif;
-    }
-    nav {
-      display: flex;
-      border-bottom: 1px solid #daa800;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    input {
-      border: 1px solid #ccc;
-      font-size: 14px;
-      height: 35px;
-      padding: 4px 8px;
-      position: absolute;
-      width: 50%;
-    }
-    input:focus {
-      outline: none;
-    }
-    button {
-      text-align: center;
-    }
-    button:focus {
-      outline: none;
-    }
-    button.btn-search,
-    button.btn-reset {
-      background: hotpink;
-      border: none;
-      height: 30px;
-      font-size: 12px;
-      padding: 4px;
-      position: absolute;
-      width: 30px;
-    }
-    .sample {
-      float: left;
-      height: 50px;
-      margin: 0 8%;
-      margin-left: 15%;
-      margin-top: 2%;
-      position: relative;
-      width: 34%;
-    }
-    .sample.one input,
-    .sample.two input {
-      border-radius: 15px;
-      right: 0;
-      transition: all 0.3s ease-in-out;
-      width: 50%;
-    }
-    .sample.one input:focus,
-    .sample.two input:focus {
-      width: 100%;
-    }
-    .sample.one input:focus ~ button.btn-search,
-    .sample.two input:focus ~ button.btn-search {
-      background: hotpink;
-      color: #fff;
-    }
-    .sample.one input:focus ~ button.btn-reset,
-    .sample.two input:focus ~ button.btn-reset {
-      right: -22px;
-    }
-    .sample.one button,
-    .sample.two button {
-      transition: all 0.3s ease-in-out;
-    }
-    .sample.one button.btn-search,
-    .sample.two button.btn-search {
-      background: #ccc;
-      border-radius: 50%;
-      height: 26px;
-      right: 2px;
-      top: 4px;
-      transition: all 0.3s ease-in-out;
-      width: 26px;
-    }
-    .sample.one button.btn-reset,
-    .sample.two button.btn-reset {
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 50%;
-      font-size: 10px;
-      height: 20px;
-      line-height: 20px;
-      padding: 0;
-      right: 5px;
-      top: 5px;
-      width: 20px;
-      z-index: -1;
-    }
-
-    ul {
-      display: flex;
-    }
-    li {
-      list-style: none;
-      margin: 1rem;
-      margin-right: 35px;
-      margin-left: 25px;
-    }
-
-    a {
-      text-decoration: none;
-      color: rgb(49, 49, 47);
-    }
-    a:hover {
-      text-decoration: none;
-      color: #daa800;
-      opacity: 0.8;
-      transition: 1s;
-    }
-    .signup {
-      background-color: #4caf50;
-      border: none;
-      color: white;
-      padding: 16px 32px;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 25px;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      transition-duration: 0.4s;
-      cursor: pointer;
-      background-color: white;
-      color: black;
-      border: 2px solid #4caf50;
-    }
-
-    .signup:hover {
-      background-color: #4caf50;
-      color: white;
-    }
     .main-container {
       width: 100%;
       display: flex;
@@ -213,16 +62,15 @@
       justify-content: space-evenly;
       flex-wrap: wrap;
       padding: 20px;
-    
     }
-    .top-news{
+    .top-news {
       height: 700px;
       padding: 20px;
       overflow: scroll;
       border-radius: 17px;
       background-color: white;
     }
-    .top-news-heading{
+    .top-news-heading {
       font-size: 2rem;
       font-weight: 800;
       margin-bottom: 20px;
@@ -245,8 +93,12 @@
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       background-color: white;
     }
-    .link
-    {
+    .top-cities a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 400;
+    }
+    .link {
       text-decoration: none;
       color: black;
     }
@@ -258,41 +110,142 @@
     .city {
       display: flex;
       font-size: 1.3rem;
+      transition: .5s ease;
+      margin: auto!important;
       margin-bottom: 20px;
+      padding: 6px;
+      backface-visibility: hidden
+    }
+    .city:hover{
+      background-color: #c0c0c0;
+      border-radius: 27px;
+      padding: 6px;
     }
     .city img {
       height: 30px;
       margin-right: 10px;
       width: 30px;
     }
-    
+    .active{
+      background-color: #c0c0c0;
+      border-radius: 27px;
+      padding: 6px;
+    }
+
     .middle-container {
-      display: flex;
       height: 800px;
       overflow: scroll;
       width: 60%;
-      justify-content: space-evenly;
+      gap: 10px;
       flex-wrap: wrap;
     }
-    .card {
+    .initial-card-container {
+      display: flex;
+      flex-wrap: wrap;
+      height: 60%;
+      width: 100%;
+      flex-direction: column;
+      overflow: scroll;
+    }
+    .initial-card {
+      height: 400px;
       margin: 10px;
       background-color: #fff;
       border-radius: 27px;
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-      width: 300px;
+      width: 365px;
+      transition: transform 0.2s;
     }
-    .card-header img {
-      width: 100%;
-      object-fit: cover;
+    .initial-card:hover {
+      transform: scale(1.03);
     }
-    .body-card {
+
+    .initial-card-description {
+      height: 50px;
+      overflow: scroll;
+    }
+    .initial-body-card {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
       padding: 10px !important;
       min-height: 250px;
+    }
+    .card {
+      display: flex;
+      height: fit-content;
+      flex-direction: row;
+      margin: auto;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fff;
+      border-radius: 27px;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .initial-card-tag {
+      height: 25px;
+      width: 50%;
+      align-items: center;
+      justify-items: center;
+      text-align: center;
+      cursor: auto !important;
+      overflow: hidden;
+    }
+    .initial-card-title {
+      height: 90px;
+      overflow: hidden;
+    }
+    .initial-img-container {
+      height: 200px;
+      max-width: 100%;
+      display: flex;
+      margin: auto;
+      margin-bottom: 10px;
+      flex-direction: row;
+    }
+    .initial-card img {
+      width: 100%;
+      border-radius: 27px;
+      object-fit: cover;
+    }
+    .img-container {
+      height: 100%;
+      max-width: 40%;
+      display: flex;
+      margin: auto;
+      flex-direction: row;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 27px;
+      object-fit: cover;
+    }
+    .body-card {
+      display: flex;
+      width: 70%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 10px !important;
+      min-height: 250px;
+    }
+    .initial-read-more {
+      text-align: center;
+      border-radius: 27px;
+      background-color: black;
+      justify-content: center;
+    }
+    .read-more {
+      text-align: center;
+      border-radius: 27px;
+      background-color: black;
+      justify-content: center;
     }
 
     .tag {
@@ -347,134 +300,60 @@
     }
   </style>
   <body>
-    <!-- <nav>
-      <div class="icon-container">
-        <img
-          class="logo"
-          src="https://res.cloudinary.com/dpshfseuf/image/upload/v1668487663/samples/logo_drscr7.png"
-        />
-        <h2 class="app-name"><a href="./index.html">Newzio </a></h2>
-      </div>
-      <div class="sample one">
-        <input type="text" name="search" placeholder="search for me" />
-        <button type="submit" class="btn btn-search fa fa-search"></button>
-      </div>
-      <script>
-        $("body")
-          .on("click", "div.three button.btn-search", function (event) {
-            event.preventDefault();
-            var $input = $("div.three input");
-            $input.focus();
-            if ($input.val().length() > 0) {
-              // submit form
-            }
-          })
-          .on("click", "div.four button.btn-search", function (event) {
-            event.preventDefault();
-            var $input = $("div.four input");
-            $input.focus();
-            if ($input.val().length() > 0) {
-              // submit form
-            }
-          })
-          .on("click", "div.five button.btn-search", function (event) {
-            event.preventDefault();
-            var $input = $("div.five input");
-            $input.focus();
-            if ($input.val().length() > 0) {
-              // submit form
-            }
-          })
-          .on("click", "div.six button.btn-search", function (event) {
-            event.preventDefault();
-            var $input = $("div.six input");
-            $input.focus();
-            if ($input.val().length() > 0) {
-              // submit form
-            }
-          })
-          .on("click", "div.thirteen button.btn-search", function (event) {
-            event.preventDefault();
-            var $input = $("div.thirteen input");
-            $input.focus();
-            if ($input.val().length() > 0) {
-              // submit form
-            }
-          })
-          .on("click", "div.fourteen button.btn-search", function (event) {
-            event.preventDefault();
-            var $input = $("div.fourteen input");
-            $input.focus();
-            if ($input.val().length() > 0) {
-              // submit form
-            }
-          });
-      </script>
-      <div class="menu">
-        <ul>
-          <li>
-            <a href="./index.html"> <b>Home</b></a>
-          </li>
-          <li>
-            <a href="#"><b>About</b></a>
-          </li>
-          <li>
-            <a href="./Login/login.html"><b>Sign In</b></a>
-          </li>
-          <li>
-            <a href="./Login/signup.html"><b>Register</b></a>
-          </li>
-          <!-- <div class="user">
-                        <img src="https://lh3.googleusercontent.com/ogw/ADGmqu8sn9zF15pW59JIYiLgx3PQ3EyZLFp5Zqao906l=s32-c-mo" alt="user" />
-                        <div class="user-info">
-                        </div>
-                    </div>       -->
-        </ul>
-      </div>
-    </nav>     -->
     <div class="main-container">
       <div class="left-container">
         <div class="top-news-heading">[ TOP NEWS ]</div>
         <div class="top-news">
-
-          <hr>
+          <hr />
           {% for top_news in tops.articles %}
-         <a href="{{top_news.url}}" class="link" target="_blank"> <h5>{{top_news.author}}</h5>
-          <p>{{top_news.title}}</p>
-          <p class="text-muted">{{top_news.publishedAt}}</p>
-          <hr></a>
+          <a href="{{top_news.url}}" class="link" target="_blank">
+            <h5>{{top_news.author}}</h5>
+            <p>{{top_news.title}}</p>
+            <p class="text-muted">{{top_news.publishedAt}}</p>
+            <hr
+          /></a>
           {% endfor %}
         </div>
-       
       </div>
       <div class="middle-container">
         {% for news in news.articles %}
         <div class="card">
-          <img src="{{news.urlToImage}}" alt="rover" />
           <div class="body-card">
-            <span class="tag tag-purple">{{news.author}}</span>
+            <span class="tag tag-pink">{{news.author}}</span>
             <h5>{{news.title}}</h5>
             <p>{{news.description}}</p>
-            <a href="{{news.url}}" target="_blank" class="btn btn-primary"
+            <a
+              href="{{news.url}}"
+              target="_blank"
+              class="btn btn-primary read-more"
               >Read More</a
             >
           </div>
+          <div class="img-container">
+            {% if news.urlToImage == none %}
+            <img
+              src="https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png"
+              alt="No Image"
+            />
+            {% else %}
+            <img src="{{news.urlToImage}}" alt="Image" />
+            {% endif %}
+          </div>
         </div>
         {% endfor %}
-
       </div>
       <div class="right-container">
         <div class="top-cities">
           <h2 class="cities">TOP CITIES</h2>
           <hr />
-          <div class="city">
+          <div class="city ">
             <img
               src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
               alt=""
             />
             <a href="/chennai">Chennai</a>
           </div>
-          <div class="city">
+          <div class="city ">
             <img
               src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
               alt=""
@@ -488,7 +367,7 @@
             />
             <a href="/mumbai">Mumbai</a>
           </div>
-          <div class="city">
+          <div class="city active">
             <img
               src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
               alt=""

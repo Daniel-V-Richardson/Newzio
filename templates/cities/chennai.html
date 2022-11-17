@@ -27,7 +27,6 @@
       href="https://fonts.googleapis.com/css?family=Open Sans"
       rel="stylesheet"
     />
-    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
   </head>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
@@ -40,11 +39,10 @@
       display: none;
     }
     body {
-     
+      display: absolute;
       justify-content: center;
       align-items: center;
       margin: 0;
-      padding: 0;
       background-color: #f7f8fc;
       font-family: "Open Sans";
       color: #10182f;
@@ -54,7 +52,7 @@
       width: 100%;
       display: flex;
       margin: auto;
-      margin-top: 100px;
+      margin-top: 50px;
       padding: auto;
     }
     .left-container {
@@ -127,6 +125,11 @@
       height: 30px;
       margin-right: 10px;
       width: 30px;
+    }
+    .active{
+      background-color: #c0c0c0;
+      border-radius: 27px;
+      padding: 6px;
     }
 
     .middle-container {
@@ -265,7 +268,7 @@
       background-color: #cd5b9f;
     }
     .tag-cyan {
-      background-color: #62e2f3;
+      background-color: #038913;
     }
     .tag-aas {
       background-color: #838485;
@@ -295,39 +298,8 @@
     .user-info small {
       color: black;
     }
-  /*  Nav bar Styling */
-  .navbar{
-    display: flex;
-    top: 0;
-    position: fixed;
-    z-index: 100;
-    width: 100%;
-    height: 7%;
-    background-color: black;
-  }
-  .nav-left {
-    width: 30%;
-    display: flex;
-    justify-items: center;
-    color: white;
-    font-family: 'Lato';font-size: 2rem;
-  }
-  .nav-center{
-    width: 40%;
-  }
-  .nav-right{
-    width: 30%;
-  }
   </style>
   <body>
-    <div class="navbar">
-      <div class="nav-left">
-        <img src="" alt="Logo">
-        <h4>Newzio</h4>
-      </div>
-      <div class="nav-center"></div>
-      <div class="nav-right"></div>
-    </div>
     <div class="main-container">
       <div class="left-container">
         <div class="top-news-heading">[ TOP NEWS ]</div>
@@ -344,38 +316,10 @@
         </div>
       </div>
       <div class="middle-container">
-        <div class="initial-card-container">
-          {% for news in trendings.articles %}
-          <div class="initial-card">
-            <div class="initial-body-card">
-              <div class="initial-img-container">
-                {% if news.urlToImage == none %}
-                <img
-                  src="https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png"
-                  alt="No Image"
-                />
-                {% else %}
-                <img src="{{news.urlToImage}}" alt="Image" />
-                {% endif %}
-              </div>
-              <span class="tag tag-purple initial-card-tag"
-                >{{news.author}}</span
-              >
-              <h5 class="initial-card-title">{{news.title}}</h5>
-              <a
-                href="{{news.url}}"
-                target="_blank"
-                class="btn btn-primary initial-read-more"
-                >Read More</a
-              >
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-        {% for news in cases.articles %}
+        {% for news in news.articles %}
         <div class="card">
           <div class="body-card">
-            <span class="tag tag-purple">{{news.author}}</span>
+            <span class="tag tag-cyan">{{news.author}}</span>
             <h5>{{news.title}}</h5>
             <p>{{news.description}}</p>
             <a
@@ -402,7 +346,7 @@
         <div class="top-cities">
           <h2 class="cities">TOP CITIES</h2>
           <hr />
-          <div class="city">
+          <div class="city active">
             <img
               src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1668573493/final%20Project/assets/location_jrb7qz.png"
               alt=""
