@@ -5,47 +5,173 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open Sans"
+      rel="stylesheet"
+    />
   </head>
   <style>
-    *{
-        padding: 0;
-        margin: 0;
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f8fc;
+      font-family: "Open Sans";
+      color: #10182f;
+    }
+    .link {
+      text-decoration: none;
+      color: white;
     }
     /*  Nav bar Styling */
-  .navbar{
-    display: flex;
-    top: 0;
-    position: fixed;
-    z-index: 100;
-    width: 100%;
-    height: 7%;
-    background-color: black;
-  }
-  .nav-left {
-    width: 30%;
-    display: flex;
-    color: white;
-    font-family: 'Lato';font-size: 2rem;
-  }
-  .nav-left h4{
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-  .nav-center{
-    width: 40%;
-  }
-  .nav-right{
-    width: 30%;
-  }
+    .navbar {
+      display: flex;
+      top: 0;
+      position: fixed;
+      z-index: 100;
+      width: 100%;
+      height: 7%;
+      background-color: black;
+    }
+    .nav-left {
+      width: 30%;
+      margin-left: 20px;
+      display: flex;
+      color: white;
+      font-family: "Lato";
+      font-size: 3rem;
+    }
+    .nav-left a {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    .logo-name {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    .nav-center {
+      width: 40%;
+    }
+    .nav-right {
+      width: 30%;
+      display: flex;
+      gap: 40px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .nav-item {
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+    .signin {
+      padding: 10px;
+      border: none;
+      margin-right: -30px;
+      color: #000;
+      background-color: rgb(247, 247, 244);
+      border-radius: 27px;
+    }
+    .register {
+      padding: 10px;
+      border: none;
+      color: #000;
+      background-color: rgb(127, 255, 191);
+      border-radius: 27px;
+    }
+    /* Search Styling Here*/
+    .search-container {
+      height: 60%;
+      width: 60%;
+      border-radius: 27px;
+      justify-content: center;
+      background-color: white;
+      margin-top: 14px !important;
+      margin: auto;
+    }
+    .search-form {
+      align-items: center;
+      margin: auto;
+      display: flex;
+      height: 100%;
+      width: 100%;
+    }
+    .search-input-wrapper {
+      height: 100%;
+      width: 100%;
+    }
+    .search-input {
+      height: 100%;
+      width: 100%;
+      outline: none;
+      font-size: 1.3rem;
+      border: none;
+      padding: 10px;
+      margin: auto;
+      border-radius: 27px;
+    }
+    .search-submit {
+      height: 100%;
+      -webkit-transform: rotate(45deg); 
+      -moz-transform: rotate(45deg); 
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+      border: none;
+      color: #000;
+      border-radius: 27px;
+      outline: none;
+      background-color: Transparent;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      font-size: 2.3rem;
+    }
   </style>
   <body>
     <div class="navbar">
       <div class="nav-left">
-        <img src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1666162102/logo_aehult.png" alt="Logo" />
-        <h4>Newzio</h4>
+        <img
+          src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1666162102/logo_aehult.png"
+          alt="Logo"
+        />
+        <a href="/" class="link">
+          <h4 class="logo-name">Newzio</h4>
+        </a>
       </div>
-      <div class="nav-center"></div>
-      <div class="nav-right"></div>
+      <div class="nav-center">
+        <div class="search-container">
+          <form class="search-form" action="#" method="post">
+            <div class="search-input-wrapper">
+              <input
+                class="search-input"
+                type="search"
+                placeholder="Literally Search Anything..."
+              />
+            </div>
+            <input class="search-submit" type="submit" value=" &#9906;" />
+          </form>
+        </div>
+      </div>
+      <div class="nav-right">
+        <a href="/" class="link">
+          <div class="nav-item">Home</div>
+        </a>
+        <a href="/about" class="link">
+          <div class="nav-item">About</div>
+        </a>
+        <a href="/trending" class="link">
+          <div class="nav-item">Trending</div>
+        </a>
+        <a href="/signin" class="link">
+          <div class="nav-item signin">Sign In</div>
+        </a>
+        <a href="/register" class="link">
+          <div class="nav-item register">Register</div>
+        </a>
+      </div>
     </div>
   </body>
 </html>
