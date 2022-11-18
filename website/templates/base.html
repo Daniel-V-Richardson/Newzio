@@ -2,14 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="index.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Open Sans"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
+    <title>{% block title %} {% endblock %}</title>
   </head>
+  {% block styles %} {% endblock %}
   <style>
     * {
       padding: 0;
@@ -20,16 +43,27 @@
       align-items: center;
       margin: 0;
       padding: 0;
-      background-color: #f7f8fc;
       font-family: "Open Sans";
       color: #10182f;
     }
-    .link {
+    .card-tag {
+      height: 25px;
+      width: 50%;
+      align-items: center;
+      justify-items: center;
+      text-align: center;
+      cursor: auto !important;
+      overflow: hidden;
+    }
+    .link1 {
       text-decoration: none;
       color: white;
     }
+    .link1:hover {
+      color: white;
+    }
     /*  Nav bar Styling */
-    .navbar {
+    .navs {
       display: flex;
       top: 0;
       position: fixed;
@@ -43,14 +77,14 @@
       margin-left: 20px;
       display: flex;
       color: white;
-      font-family: "Lato";
-      font-size: 3rem;
     }
     .nav-left a {
       margin-top: auto;
       margin-bottom: auto;
     }
     .logo-name {
+      font-family: "Lato";
+      font-size: 3rem;
       margin-top: auto;
       margin-bottom: auto;
     }
@@ -69,6 +103,9 @@
       font-size: 1.3rem;
     }
     .signin {
+      width: 100px;
+      margin: auto;
+      text-align: center;
       padding: 10px;
       border: none;
       margin-right: -30px;
@@ -78,6 +115,15 @@
     }
     .register {
       padding: 10px;
+      border: none;
+      color: #000;
+      margin-right: -30px;
+      background-color: rgb(127, 255, 191);
+      border-radius: 27px;
+    }
+    .logout {
+      padding: 10px;
+     
       border: none;
       color: #000;
       background-color: rgb(127, 255, 191);
@@ -115,40 +161,42 @@
       border-radius: 27px;
     }
     .search-submit {
-      height: 100%;
-      -webkit-transform: rotate(45deg); 
-      -moz-transform: rotate(45deg); 
+      margin-top: -10px !important;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
       -o-transform: rotate(45deg);
       transform: rotate(45deg);
       border: none;
       color: #000;
       border-radius: 27px;
       outline: none;
+      align-items: center;
       background-color: Transparent;
       background-repeat: no-repeat;
       cursor: pointer;
-      font-size: 2.3rem;
+      font-size: 3rem !important;
     }
   </style>
   <body>
-    <div class="navbar">
+    <div class="navs">
       <div class="nav-left">
         <img
           src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1666162102/logo_aehult.png"
           alt="Logo"
         />
-        <a href="/" class="link">
+        <a href="/" class="link1">
           <h4 class="logo-name">Newzio</h4>
         </a>
       </div>
       <div class="nav-center">
         <div class="search-container">
-          <form class="search-form" action="#" method="post">
+          <form class="search-form" action="/search" method="GET">
             <div class="search-input-wrapper">
               <input
                 class="search-input"
                 type="search"
                 placeholder="Literally Search Anything..."
+                name="q"
               />
             </div>
             <input class="search-submit" type="submit" value=" &#9906;" />
@@ -156,22 +204,62 @@
         </div>
       </div>
       <div class="nav-right">
-        <a href="/" class="link">
+        <a href="/" class="link1">
           <div class="nav-item">Home</div>
         </a>
-        <a href="/about" class="link">
+        <a href="/about" class="link1">
           <div class="nav-item">About</div>
         </a>
-        <a href="/trending" class="link">
+        <a href="/trending" class="link1">
           <div class="nav-item">Trending</div>
         </a>
-        <a href="/signin" class="link">
+        <a href="/signin" class="link1">
           <div class="nav-item signin">Sign In</div>
         </a>
-        <a href="/register" class="link">
+        <a href="/register" class="link1">
           <div class="nav-item register">Register</div>
+        </a>
+        <a href="/logout" class="link1">
+          <div class="nav-item logout">Logout</div>
         </a>
       </div>
     </div>
+
+    <style>
+      .alert1 {
+        margin-top: 100px;
+      }
+    </style>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category,message in messages %} {% if category == 'error'
+    %}
+    <div
+      class="alert1 alert alert-danger alert-dismissable fade show"
+      role="alert"
+    >
+      {{ message }}
+      <!-- <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div>
+    {% else %}
+    <div
+      class="alert1 alert alert-success alert-dismissable fade show"
+      role="alert"
+    >
+      {{ message }}
+      <!-- <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %} {% block body %} {%
+    endblock %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    {% block script %} {% endblock %}
   </body>
 </html>

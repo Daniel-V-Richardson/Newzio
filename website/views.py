@@ -1,20 +1,10 @@
-from flask import Flask, render_template
+from flask import Blueprint, render_template, request, g
 import requests
 
-app = Flask(__name__)
-app.secret_key = "123456789"
+news = Blueprint('news', __name__)
 
-
-@app.route('/nav')
-def nav():
-    return render_template('nav.html')
-
-# https://newsapi.org/v2/top-headlines?country=in&category=general&apikey=04936e1d20cf4a7db857af7d646cb0a7
-
-
-@app.route('/')
-def index():
-
+@news.route('/')
+def home():
     url = "https://newsapi.org/v2/top-headlines?country=in&language=en&apikey=04936e1d20cf4a7db857af7d646cb0a7"
     trending = "https://newsapi.org/v2/everything?q=trending&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
     top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
@@ -33,22 +23,35 @@ def index():
         'articles': trending_request['articles']
     }
 
+    # return render_template("index.html")
     return render_template('index.html', cases=case, tops=top, trendings=trending)
 
+@news.route('/nav')
+def nav():
+    
+    return render_template('nav.html')
 
-@app.route('/signin')
-def signin():
-    return render_template('/components/signin.html')
+@news.route('/search')
+def search():
+    g.q = request.args.get('q')
+    
+    trending = 'https://newsapi.org/v2/everything?q='+g.q+'&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7'
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
 
+    trending_request = requests.get(trending).json()
+    top_request = requests.get(top).json()
 
-@app.route('/register')
-def register():
-    return render_template('/components/register.html')
-
+    trending = {
+        'articles': trending_request['articles']
+    }
+    top = {
+        'articles': top_request['articles']
+    }
+    return render_template('/components/search.html',q= g.q, search = trending, tops = top)
 
 # Routing for Top Cities:
 # Chennai
-@app.route('/chennai')
+@news.route('/chennai')
 def chennai():
     top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
     chennai = "https://newsapi.org/v2/everything?q=chennai&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
@@ -66,7 +69,7 @@ def chennai():
 # Bengaluru
 
 
-@app.route('/bangalore')
+@news.route('/bangalore')
 def bangalore():
     top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
     chennai = "https://newsapi.org/v2/everything?q=bangalore&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
@@ -84,7 +87,7 @@ def bangalore():
 # Mumbai
 
 
-@app.route('/mumbai')
+@news.route('/mumbai')
 def mumbai():
     top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
     chennai = "https://newsapi.org/v2/everything?q=mumbai&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
@@ -102,7 +105,7 @@ def mumbai():
 # Kolkata
 
 
-@app.route('/kolkata')
+@news.route('/kolkata')
 def kolkata():
     top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
     chennai = "https://newsapi.org/v2/everything?q=kolkata&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
@@ -120,7 +123,7 @@ def kolkata():
 # Hyderabad
 
 
-@app.route('/hyderabad')
+@news.route('/hyderabad')
 def hyderabad():
     top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
     chennai = "https://newsapi.org/v2/everything?q=hyderabad&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
@@ -138,7 +141,7 @@ def hyderabad():
 # Delhi
 
 
-@app.route('/delhi')
+@news.route('/delhi')
 def delhi():
     top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
     chennai = "https://newsapi.org/v2/everything?q=delhi&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
@@ -156,7 +159,7 @@ def delhi():
 # Lucknow
 
 
-@app.route('/Lucknow')
+@news.route('/Lucknow')
 def lucknow():
     top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
     chennai = "https://newsapi.org/v2/everything?q=lucknow&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
@@ -174,7 +177,7 @@ def lucknow():
 # Patna
 
 
-@app.route('/patna')
+@news.route('/patna')
 def patna():
     top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
     chennai = "https://newsapi.org/v2/everything?q=patna&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
@@ -192,7 +195,7 @@ def patna():
 # Kochi
 
 
-@app.route('/kochi')
+@news.route('/kochi')
 def kochi():
     top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
     chennai = "https://newsapi.org/v2/everything?q=kochi&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
@@ -210,7 +213,7 @@ def kochi():
 # Ranchi
 
 
-@app.route('/ranchi')
+@news.route('/ranchi')
 def ranchi():
     top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
     chennai = "https://newsapi.org/v2/everything?q=ranchi&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
@@ -226,7 +229,7 @@ def ranchi():
     return render_template('/cities/ranchi.html', tops=top, news=chennai)
 
 
-@app.route('/tech')
+@news.route('/tech')
 def tech():
     url = "https://newsapi.org/v2/top-headlines?category=technology&apikey=04936e1d20cf4a7db857af7d646cb0a7"
 
@@ -235,7 +238,3 @@ def tech():
         'articles': r['articles']
     }
     return render_template('tech.html', headlines=headline)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

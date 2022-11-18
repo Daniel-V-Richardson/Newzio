@@ -1,15 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Newzio:Register
+{% endblock %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newzio - Sign In</title>
+   
 </head>
 <link
 href="https://fonts.googleapis.com/css?family=Open Sans"
 rel="stylesheet"
 />
+
+{% block styles %}
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
 :root {
@@ -47,113 +54,6 @@ body {
   font-size: var(--normal-font-size);
   color: var(--primary-color-dark);
 }
-/* Navbar Styling */
-.link {
-    text-decoration: none;
-    color: white;
-  }
-  /*  Nav bar Styling */
-  .navbar {
-    display: flex;
-    top: 0;
-    position: fixed;
-    z-index: 100;
-    width: 100%;
-    height: 7%;
-    background-color: black;
-  }
-  .nav-left {
-    width: 30%;
-    margin-left: 20px;
-    display: flex;
-    color: white;
-    font-family: "Lato";
-    font-size: 3rem;
-  }
-  .nav-left a {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-  .logo-name {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-  .nav-center {
-    width: 40%;
-  }
-  .nav-right {
-    width: 30%;
-    display: flex;
-    gap: 40px;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  .nav-item {
-    font-weight: 600;
-    font-size: 1.3rem;
-  }
-  .signin {
-    padding: 10px;
-    border: none;
-    margin-right: -30px;
-    color: #000;
-    background-color: rgb(247, 247, 244);
-    border-radius: 27px;
-  }
-  .register {
-    padding: 10px;
-    border: none;
-    color: #000;
-    background-color: rgb(127, 255, 191);
-    border-radius: 27px;
-  }
-  /* Search Styling Here*/
-  .search-container {
-    height: 60%;
-    width: 60%;
-    border-radius: 27px;
-    justify-content: center;
-    background-color: white;
-    margin-top: 14px !important;
-    margin: auto;
-  }
-  .search-form {
-    align-items: center;
-    margin: auto;
-    display: flex;
-    height: 100%;
-    width: 100%;
-  }
-  .search-input-wrapper {
-    height: 100%;
-    width: 100%;
-  }
-  .search-input {
-    height: 100%;
-    width: 100%;
-    outline: none;
-    font-size: 1.3rem;
-    border: none;
-    padding: 10px;
-    margin: auto;
-    border-radius: 27px;
-  }
-  .search-submit {
-    height: 100%;
-    -webkit-transform: rotate(45deg); 
-    -moz-transform: rotate(45deg); 
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    border: none;
-    color: #000;
-    border-radius: 27px;
-    outline: none;
-    background-color: Transparent;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    font-size: 2.3rem;
-  }
-
 /*Sign In Styling */
 
 h1 {
@@ -366,51 +266,10 @@ img {
   }
 }
 </style>
-<body>
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="nav-left">
-          <img
-            src="https://res.cloudinary.com/newztrakerapplication/image/upload/v1666162102/logo_aehult.png"
-            alt="Logo"
-          />
-          <a href="/" class="link">
-            <h4 class="logo-name">Newzio</h4>
-          </a>
-        </div>
-        <div class="nav-center">
-          <div class="search-container">
-            <form class="search-form" action="#" method="post">
-              <div class="search-input-wrapper">
-                <input
-                  class="search-input"
-                  type="search"
-                  placeholder="Literally Search Anything..."
-                />
-              </div>
-              <input class="search-submit" type="submit" value=" &#9906;" />
-            </form>
-          </div>
-        </div>
-        <div class="nav-right">
-          <a href="/" class="link">
-            <div class="nav-item">Home</div>
-          </a>
-          <a href="/about" class="link">
-            <div class="nav-item">About</div>
-          </a>
-          <a href="/trending" class="link">
-            <div class="nav-item">Trending</div>
-          </a>
-          <a href="/signin" class="link">
-            <div class="nav-item signin">Sign In</div>
-          </a>
-          <a href="/register" class="link">
-            <div class="nav-item register">Register</div>
-          </a>
-        </div>
-      </div>
+{% endblock %}
 
+
+    {% block body %}    
     <!-- Login -->
     <section class="login">
             <div class="login__content">
@@ -420,72 +279,49 @@ img {
     
                 <div class="login__forms">
     
-                    <!-- ============= Sign in page =================== -->
+                   
     
-                    <form action="" onsubmit="return(validate())" class="login__registre" id="login-in" name="login">
-                        <h1 class="login__title">Sign In</h1>
-    
-                        <div class="login__box">
-                            <i class="bx bx-user login__icon"></i>
-                            <input type="email" placeholder="Email" name="email" class="login__input">
-                        </div>
-    
-                        <div class="login__box">
-                            <i class="bx bx-lock login__icon"></i>
-                            <input type="password" placeholder="Password" name="password"class="login__input">
-                        </div>
-                        <a href="#" class="login__forget">Forget password?</a>
-    
-                        <input type="submit" class="login__button" value="Sign In">
-    
-                        <div class="">
-                            <span class="login__acount">Don't have an Account?</span>
-                            <span class="login__signin" id="sign-up">Sign Up</span>
-                        </div>
-                    </form>
-    
-                    <!-- ============= Sign Up page =================== -->
-    
-                    <form action="" class="login__create none" id="login-up">
+                    <form method="POST" action="" onsubmit="return(validate())" class="login__create" id="login-up" name="login">
                         <h1 class="login__title">Create Account</h1>
     
                         <div class="login__box">
                             <i class="bx bx-user login__icon"></i>
-                            <input type="text" placeholder="Username" class="login__input">
+                            <input type="text" placeholder="Name" id="name" name= "name"class="login__input">
                         </div>
     
                         <div class="login__box">
                             <i class="bx bx-at login__icon"></i>
-                            <input type="email" placeholder="Email" class="login__input">
+                            <input type="email" placeholder="Email" id="email" name="email" class="login__input">
                         </div>
     
                         <div class="login__box">
                             <i class="bx bx-lock login__icon"></i>
-                            <input type="password" placeholder="Passoword" class="login__input">
+                            <input type="password" placeholder="Passoword" id="password" name="password" class="login__input">
                         </div>
                         <a href="#" class="login__forget">Forget password?</a>
     
-                        <a href="#" class="login__button">Sign Up</a>
+                        <button type="submit" class="login__button">Register</button>
     
                         <div>
                             <span class="login__acount">Already have an Account?</span>
-                            <span class="login__signup" id="sign-in">Sign In</span>
-                        </div>
-    
-                        <div class="login__social">
-                            <a href="#" class="login__social-icon"><i class='bx bxl-facebook'></i></a>
-                            <a href="#" class="login__social-icon"><i class='bx bxl-twitter'></i></a>
-                            <a href="#" class="login__social-icon"><i class="bx bxl-google"></i></a>
+                            <a href="/signin" class="link"><span class="login__signup" id="sign-in">Sign In</span></a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-      </body>  
+      {% endblock %} 
+
+      {% block script %}
       <script>
        
         function validate()
         {
+            if(document.login.name.value.length<3){
+                alert("Password Should have atleast 3 letters")
+                document.login.name.focus();
+                return false;  
+             }
             var emailID = document.login.email.value;
             atpos = emailID.indexOf("@");
             dotpos = emailID.lastIndexOf(".");
@@ -494,6 +330,7 @@ img {
                 document.login.email.focus();
                 return false;
              }
+             
              if(document.login.password.value.length < 8){
                 alert("Password Should have atleast 8 letters")
                 document.login.password.focus();
@@ -502,4 +339,5 @@ img {
              return( true );
         }
       </script>
+      {% endblock %}
 </html>
