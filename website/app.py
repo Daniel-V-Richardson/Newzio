@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, g
-from numpy import empty
 import requests
 
 

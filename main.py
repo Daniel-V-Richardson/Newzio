@@ -1,4 +1,3 @@
-from re import T
 from website import create_app
 
 app = create_app()

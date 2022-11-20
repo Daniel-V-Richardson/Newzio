@@ -1,13 +1,17 @@
-from flask import Blueprint, render_template, request, g
+from flask import Blueprint, redirect, render_template, request, g, session, url_for
+from decouple import config
 import requests
 
 news = Blueprint('news', __name__)
+api_key = config('NEWS_API')
 
 @news.route('/')
 def home():
-    url = "https://newsapi.org/v2/top-headlines?country=in&language=en&apikey=04936e1d20cf4a7db857af7d646cb0a7"
-    trending = "https://newsapi.org/v2/everything?q=trending&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
-    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
+    if not session:
+        return redirect(url_for('views.login'))
+    url = "https://newsapi.org/v2/top-headlines?country=in&language=en&apikey="+api_key+""
+    trending = "https://newsapi.org/v2/everything?q=trending&language=en&sortBy=publishedAt&apiKey="+api_key+""
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey="+api_key+""
 
     url_request = requests.get(url).json()
     top_request = requests.get(top).json()
@@ -22,8 +26,6 @@ def home():
     trending = {
         'articles': trending_request['articles']
     }
-
-    # return render_template("index.html")
     return render_template('index.html', cases=case, tops=top, trendings=trending)
 
 @news.route('/nav')
@@ -35,8 +37,8 @@ def nav():
 def search():
     g.q = request.args.get('q')
     
-    trending = 'https://newsapi.org/v2/everything?q='+g.q+'&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7'
-    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
+    trending = 'https://newsapi.org/v2/everything?q='+g.q+'&language=en&apiKey='+api_key+""
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey="+api_key+""
 
     trending_request = requests.get(trending).json()
     top_request = requests.get(top).json()
@@ -53,8 +55,10 @@ def search():
 # Chennai
 @news.route('/chennai')
 def chennai():
-    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
-    chennai = "https://newsapi.org/v2/everything?q=chennai&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
+    if not session:
+        return render_template('login.html')
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey="+api_key+""
+    chennai = "https://newsapi.org/v2/everything?q=chennai&language=en&sortBy=publishedAt&apiKey="+api_key+""
     chennai_request = requests.get(chennai).json()
     top_request = requests.get(top).json()
     top = {
@@ -71,8 +75,10 @@ def chennai():
 
 @news.route('/bangalore')
 def bangalore():
-    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
-    chennai = "https://newsapi.org/v2/everything?q=bangalore&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
+    if not session:
+        return render_template('login.html')
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey="+api_key+""
+    chennai = "https://newsapi.org/v2/everything?q=bangalore&language=en&sortBy=publishedAt&apiKey="+api_key+""
     chennai_request = requests.get(chennai).json()
     top_request = requests.get(top).json()
     top = {
@@ -89,8 +95,10 @@ def bangalore():
 
 @news.route('/mumbai')
 def mumbai():
-    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
-    chennai = "https://newsapi.org/v2/everything?q=mumbai&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
+    if not session:
+        return render_template('login.html')
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey="+api_key+""
+    chennai = "https://newsapi.org/v2/everything?q=mumbai&language=en&sortBy=publishedAt&apiKey="+api_key+""
     chennai_request = requests.get(chennai).json()
     top_request = requests.get(top).json()
     top = {
@@ -107,8 +115,10 @@ def mumbai():
 
 @news.route('/kolkata')
 def kolkata():
-    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
-    chennai = "https://newsapi.org/v2/everything?q=kolkata&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
+    if not session:
+        return render_template('login.html')
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey="+api_key+""
+    chennai = "https://newsapi.org/v2/everything?q=kolkata&language=en&sortBy=publishedAt&apiKey="+api_key+""
     chennai_request = requests.get(chennai).json()
     top_request = requests.get(top).json()
     top = {
@@ -125,8 +135,10 @@ def kolkata():
 
 @news.route('/hyderabad')
 def hyderabad():
-    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
-    chennai = "https://newsapi.org/v2/everything?q=hyderabad&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
+    if not session:
+        return render_template('login.html')
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey="+api_key+""
+    chennai = "https://newsapi.org/v2/everything?q=hyderabad&language=en&sortBy=publishedAt&apiKey="+api_key+""
     chennai_request = requests.get(chennai).json()
     top_request = requests.get(top).json()
     top = {
@@ -143,8 +155,10 @@ def hyderabad():
 
 @news.route('/delhi')
 def delhi():
-    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
-    chennai = "https://newsapi.org/v2/everything?q=delhi&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
+    if not session:
+        return render_template('login.html')
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey="+api_key+""
+    chennai = "https://newsapi.org/v2/everything?q=delhi&language=en&sortBy=publishedAt&apiKey="+api_key+""
     chennai_request = requests.get(chennai).json()
     top_request = requests.get(top).json()
     top = {
@@ -161,8 +175,10 @@ def delhi():
 
 @news.route('/Lucknow')
 def lucknow():
-    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
-    chennai = "https://newsapi.org/v2/everything?q=lucknow&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
+    if not session:
+        return render_template('login.html')
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey="+api_key+""
+    chennai = "https://newsapi.org/v2/everything?q=lucknow&language=en&sortBy=publishedAt&apiKey="+api_key+""
     chennai_request = requests.get(chennai).json()
     top_request = requests.get(top).json()
     top = {
@@ -179,8 +195,10 @@ def lucknow():
 
 @news.route('/patna')
 def patna():
-    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
-    chennai = "https://newsapi.org/v2/everything?q=patna&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
+    if not session:
+        return render_template('login.html')
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey="+api_key+""
+    chennai = "https://newsapi.org/v2/everything?q=patna&language=en&sortBy=publishedAt&apiKey="+api_key+""
     chennai_request = requests.get(chennai).json()
     top_request = requests.get(top).json()
     top = {
@@ -197,8 +215,10 @@ def patna():
 
 @news.route('/kochi')
 def kochi():
-    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
-    chennai = "https://newsapi.org/v2/everything?q=kochi&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
+    if not session:
+        return render_template('login.html')
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey="+api_key+""
+    chennai = "https://newsapi.org/v2/everything?q=kochi&language=en&sortBy=publishedAt&apiKey="+api_key+""
     chennai_request = requests.get(chennai).json()
     top_request = requests.get(top).json()
     top = {
@@ -215,8 +235,10 @@ def kochi():
 
 @news.route('/ranchi')
 def ranchi():
-    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
-    chennai = "https://newsapi.org/v2/everything?q=ranchi&language=en&sortBy=publishedAt&apiKey=04936e1d20cf4a7db857af7d646cb0a7"
+    if not session:
+        return render_template('login.html')
+    top = "https://newsapi.org/v2/top-headlines?sources=techcrunch&language=en&apiKey="+api_key+""
+    chennai = "https://newsapi.org/v2/everything?q=ranchi&language=en&sortBy=publishedAt&apiKey="+api_key+""
     chennai_request = requests.get(chennai).json()
     top_request = requests.get(top).json()
     top = {
@@ -231,7 +253,9 @@ def ranchi():
 
 @news.route('/tech')
 def tech():
-    url = "https://newsapi.org/v2/top-headlines?category=technology&apikey=04936e1d20cf4a7db857af7d646cb0a7"
+    if not session:
+        return render_template('login.html')
+    url = "https://newsapi.org/v2/top-headlines?category=technology&apikey="+api_key+""
 
     r = requests.get(url).json()
     headline = {
