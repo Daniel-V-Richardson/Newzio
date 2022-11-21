@@ -26,7 +26,6 @@ dsn = (
 
 try:
     conn = ibm_db.connect(dsn, "", "")
-    print ("Connected to database !! ")
 
 except:
     print ("Unable to connect: ", ibm_db.conn_errormsg() )

@@ -28,7 +28,10 @@ def login():
             session['login_status'] = True
             session['username'] = email
             session['user_id'] = email.split('@')[0]
+            user_id = email.split('@')[0]
+            print(user_id)
             return redirect('/')
+            
     return render_template('/components/signin.html')
 
 @auth.route('/logout')
