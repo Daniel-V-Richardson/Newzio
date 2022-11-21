@@ -38,9 +38,11 @@ def create_app():
 
     from .views import news
     from .auth import auth
+    from .categories import category
 
     app.register_blueprint(news,url_prefix='/')
     app.register_blueprint(auth,url_prefix='/')
+    app.register_blueprint(category,url_prefix='/')
 
 
     return app

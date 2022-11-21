@@ -4,8 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Newzio</title>
-    
+    <title>Newzio-Politics</title>
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/main.css') }}"
+    /> -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -34,6 +38,7 @@
     />
   </head>
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
     * {
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -137,6 +142,11 @@
       width: 60%;
       gap: 10px;
       flex-wrap: wrap;
+    }
+    .middle-container h1{
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 900;
     }
     .initial-card-container {
       display: flex;
@@ -316,35 +326,9 @@
         </div>
       </div>
       <div class="middle-container">
-        <div class="initial-card-container">
-          {% for news in trendings.articles %}
-          <div class="initial-card">
-            <div class="initial-body-card">
-              <div class="initial-img-container">
-                {% if news.urlToImage == none %}
-                <img
-                  src="https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png"
-                  alt="No Image"
-                />
-                {% else %}
-                <img src="{{news.urlToImage}}" alt="Image" />
-                {% endif %}
-              </div>
-              <span class="tag tag-purple initial-card-tag"
-                >{{news.author}}</span
-              >
-              <h5 class="initial-card-title">{{news.title}}</h5>
-              <a
-                href="{{news.url}}"
-                target="_blank"
-                class="btn btn-primary initial-read-more"
-                >Read More</a
-              >
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-        {% for news in cases.articles %}
+        <h1>Politics</h1>
+        <hr />
+        {% for news in search.articles %}
         <div class="card">
           <div class="body-card">
             <span class="tag tag-purple card-tag">{{news.author}}</span>

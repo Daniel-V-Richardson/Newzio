@@ -143,6 +143,11 @@
       gap: 10px;
       flex-wrap: wrap;
     }
+    .middle-container h1{
+      font-size: 3rem;
+      font-weight: 900;
+      text-align: center;
+    }
     .initial-card-container {
       display: flex;
       flex-wrap: wrap;
@@ -321,6 +326,7 @@
         </div>
       </div>
       <div class="middle-container">
+        <h1>Search For: {{g.q}}</h1><hr>
         {% for news in search.articles %}
         <div class="card">
           <div class="body-card">
